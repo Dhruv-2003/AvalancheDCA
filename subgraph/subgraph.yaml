@@ -1,0 +1,38 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: agentHandlerV3
+    network: avalanche
+    source:
+      abi: agentHandlerV3
+      address: "0x3fDfb0F7b1f17d39DD5e326A929541Cd2C0Cbc36"
+      startBlock: 38859413
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Creator
+        - User
+        - Agent
+        - SubscriptionEntity
+        - RewardMechanism
+        - RoundWinners
+        - Round
+      abis:
+        - name: agentHandlerV3
+          file: ./abis/agentHandlerV3.json
+      eventHandlers:
+        - event: RoundRewardsDistributed(bytes32,bytes32,uint32[],address[])
+          handler: handleRoundRewardsDistributed
+        - event: agentRegistered(string,string,uint32,address,address,uint256,uint256,string,string,bool)
+          handler: handleagentRegistered
+        - event: agentSubscriptionPurchased(uint32,uint256,string,address,address)
+          handler: handleagentSubscriptionPurchased
+        - event: agentVersionRegistered(uint32,string,uint32,address,string)
+          handler: handleagentVersionRegistered
+        - event: rewardMechanismRegistered(string,string,bytes32,uint256[])
+          handler: handlerewardMechanismRegistered
+      file: ./src/agent-handler-v-3.ts
