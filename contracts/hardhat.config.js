@@ -17,13 +17,13 @@ module.exports = {
     },
   },
 
-  defaultNetwork: "snowtrace",
+  defaultNetwork: "fuji",
   // defaultNetwork: "mumbai",
 
   networks: {
-    snowtrace: {
-      chainId: 43114,
-      url: "https://api.avax.network/ext/bc/C/rpc",
+    fuji: {
+      chainId: 43113,
+      url: "https://avalanche-fuji-c-chain.publicnode.com	",
       accounts: [PRIVATE_KEY],
     },
     mumbai: {
@@ -33,16 +33,17 @@ module.exports = {
     },
   },
   etherscan: {
-    // apiKey: "JYMKRTHHFUSX4X11I1NQRNW6X7K2FJFJUU",
-    apiKey: "snowtrace", // apiKey is not required, just set a placeholder
+    apiKey: {
+      fuji: "fuji", // apiKey is not required, just set a placeholder
+    },
     customChains: [
       {
-        network: "snowtrace",
-        chainId: 43114,
+        network: "fuji",
+        chainId: 43113,
         urls: {
           apiURL:
-            "https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan",
-          browserURL: "https://avalanche.routescan.io",
+            "https://api.routescan.io/v2/network/testnet/evm/43113/etherscan",
+          browserURL: "https://c-chain.snowtrace.io",
         },
       },
     ],

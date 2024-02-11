@@ -16,11 +16,11 @@ import {ILogAutomation} from "./interfaces/ILogAutomation.sol";
 // import { Base64 } from "./library/Base64.sol";
 
 /**
- * @title RocketAI (Decentralized Artificial Intelligence Marketplace)
+ * @title DAI_MARKET (Decentralized Artificial Intelligence Marketplace)
  * @notice
  * @dev
  */
-contract RocketAI is ChainlinkConsumer , ILogAutomation {
+contract DAI_MARKET is ChainlinkConsumer , ILogAutomation {
 
     IUnlockV12 unlockContract;
 

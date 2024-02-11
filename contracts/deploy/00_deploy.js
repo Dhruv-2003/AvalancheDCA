@@ -16,6 +16,7 @@ const {
   _forwTwitter,
   distributionRewards,
   getSourceID,
+  deployment_config_Fuji,
   _forwarderAddress,
 } = require("../utils");
 const { verify } = require("crypto");
@@ -28,19 +29,21 @@ module.exports = async ({ deployments }) => {
   console.log("Wallet+ Ethereum Address:", wallet.address);
 
   // Deploy the contract
-  const AgentPlace = await deploy("RocketAI", {
+  const AgentPlace = await deploy("DAI_MARKET", {
     from: wallet.address,
-    args: deployment_config_avax,
+    args: deployment_config_Fuji,
     log: false,
   });
 
-  // Verify the contract
-  await hre.run("verify:verify", {
-    address: AgentPlace.address,
-    constructorArguments: deployment_config_avax,
-  });
+  console.log("Contract deployed to:", AgentPlace.address);
 
-  const agentPlace = await ethers.getContractFactory("RocketAI");
+  // Verify the contract
+  // await hre.run("verify:verify", {
+  //   address: AgentPlace.address,
+  //   constructorArguments: deployment_config_Fuji,
+  // });
+
+  const agentPlace = await ethers.getContractFactory("DAI_MARKET");
 
   const agentPlaceInstance = agentPlace.attach(AgentPlace.address);
 
@@ -55,21 +58,21 @@ module.exports = async ({ deployments }) => {
   // First step then execute the second step to test the functionality separately
 
   // Add the reward mechanism for users to the contract
-  let tx = await agentPlaceInstance.addRewardMechanism(
-    "ratings",
-    " ",
-    // This should be the chainlink forwarder address after creating
-    // the time based upkeep job to call the function sendRequest with the
-    //  sourceID as parameter sourceID is a bytes32 to identify the source
-    // getSourceID("source1")
-    wallet.address,
-    // _forwRatings,
-    // An array of the amount of the reward "tokens" that each agent will receive
-    // 1st agent 1st index, 2nd agent 2nd index, etc ...
-    distributionRewards,
-    // { gasLimit: 10000000 }
-  );
-  await tx.wait();
+  // let tx = await agentPlaceInstance.addRewardMechanism(
+  //   "ratings",
+  //   " ",
+  //   // This should be the chainlink forwarder address after creating
+  //   // the time based upkeep job to call the function sendRequest with the
+  //   //  sourceID as parameter sourceID is a bytes32 to identify the source
+  //   // getSourceID("source1")
+  //   wallet.address,
+  //   // _forwRatings,
+  //   // An array of the amount of the reward "tokens" that each agent will receive
+  //   // 1st agent 1st index, 2nd agent 2nd index, etc ...
+  //   distributionRewards,
+  //   // { gasLimit: 10000000 }
+  // );
+  // await tx.wait();
 
   // tx = await agentPlaceInstance.addRewardMechanism(
   //   "twitterIds",
@@ -106,7 +109,7 @@ module.exports = async ({ deployments }) => {
   // console.log("Reward mechanisms are added");
 
   // Register the agent
-  // let tx = await agentPlaceInstance.registerAgent([
+  // tx = await agentPlaceInstance.registerAgent([
   //   // agentName
   //   "Solidity Auditor",
   //   // agentID
@@ -121,14 +124,14 @@ module.exports = async ({ deployments }) => {
   //   "lockSymbol",
   //   "baseTokenURI",
   //   // rewardCategory
-  //   getSourceID("twitterIds"),
+  //   getSourceID("ratings"),
   //   // actualCategory
   //   "Coding",
   //   true,
-  // ]);
+  // ], { gasLimit: 10000000 });
   // await tx.wait();
 
-  // console.log("Agent registered");
+  console.log("Agent registered");
 
   // Purchase the subscription of the agentName "example1" and ID getAgentID("example1")
   // let tx = await agentPlaceInstance.purchaseSubscription(

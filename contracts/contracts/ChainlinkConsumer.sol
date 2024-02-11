@@ -111,7 +111,7 @@ abstract contract ChainlinkConsumer is FunctionsClient, Ownable , ERC20{
         address _oracle,
         bytes32 _donID,
         uint64 _subscriptionId
-    ) FunctionsClient(_oracle) ERC20("RocketAI", "RAI"){
+    ) FunctionsClient(_oracle) ERC20("DAI_MARKET", "DAIM"){
 
         subscriptionId = _subscriptionId;
 
