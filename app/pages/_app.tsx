@@ -10,7 +10,7 @@ import {
 } from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { useMemo } from "react";
-import { polygonMumbai, avalanche, mainnet } from "wagmi/chains";
+import { avalancheFuji, avalanche } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { useRouter } from "next/router";
 import { ParticleNetwork } from "@particle-network/auth";
@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
   );
 
   const { chains, publicClient } = configureChains(
-    [polygonMumbai, avalanche],
+    [avalancheFuji, avalanche],
     [publicProvider()]
   );
 

@@ -38,7 +38,7 @@ function getTopKAgents(agentsIDs) {
 const _oracle = "0x6E2dc0F9DB014aE19888F539E59285D2Ea04244C";
 const _oracleAvax = "0x9f82a6A0758517FD0AfA463820F586999AF314a0"
 const _oracleFuji = "0xA9d587a00A31A52Ed70D6026794a8FC5E2F5dCb0"
-const _forwRatings = "0xA5706f43A9fDBA635Ddda9E1a81101cbc5aabaA6";
+const _forwRatings = "0x0780F4c30a7d615dE8829d64E42c821Cd154e638";
 const _forwUsers = "0xb61AEa6C66fF253D14d0fa853D6F116E1df5f608"
 const _forwTwitter = "0x55504F116EB8051a6401Aa64398E29BB9A29BD66"
 const _unlockContractFuji = "0xA9740b9E359a2c017140A4CdD838Db02Ca3f372B";

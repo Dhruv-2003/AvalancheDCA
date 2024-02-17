@@ -4,11 +4,11 @@ import { getPublicClient } from "wagmi/actions";
 const publicClient = getPublicClient();
 const chainId = publicClient.chain.id;
 
-const ROCKETAI_MUMBAI = "0xDa007aFEFA362446DAe054D4301D9440205326aB";
+const ROCKETAI_FUJI = "0xcF3FE5803d7cE8b73A0E2Ab7cD366B39e892b0b7";
 
 const ROCKETAI_AVLANCHE = "0x3fDfb0F7b1f17d39DD5e326A929541Cd2C0Cbc36";
 
-const ADDRESS = chainId === 43114 ? ROCKETAI_AVLANCHE : ROCKETAI_MUMBAI;
+const ADDRESS = chainId === 43113 ? ROCKETAI_AVLANCHE : ROCKETAI_FUJI;
 
 export const CONTRACT_ADDRESSES = ADDRESS;
 export const CONTRACT_ABI = [

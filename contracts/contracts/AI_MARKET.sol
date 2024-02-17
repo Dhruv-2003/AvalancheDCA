@@ -16,11 +16,11 @@ import {ILogAutomation} from "./interfaces/ILogAutomation.sol";
 // import { Base64 } from "./library/Base64.sol";
 
 /**
- * @title DAI_MARKET (Decentralized Artificial Intelligence Marketplace)
+ * @title AI_MARKET (Decentralized Artificial Intelligence Marketplace)
  * @notice
  * @dev
  */
-contract DAI_MARKET is ChainlinkConsumer , ILogAutomation {
+contract AI_MARKET is ChainlinkConsumer , ILogAutomation {
 
     IUnlockV12 unlockContract;
 

@@ -8,7 +8,7 @@ const Navbar = () => {
     <div className="w-screen bg-gradient-to-r from-white via-white to-rose-100">
       <div className="flex justify-between mx-6 ml-10">
         <div onClick={() => router.push("/")} className="mt-4 cursor-pointer">
-          <p className="font-semibold text-2xl">RocketAI🚀</p>
+          <p className="font-semibold text-2xl">AIMARKET🚀</p>
         </div>
         <div className="flex justify-center mx-auto">
           <div className="bg-neutral-200 opacity-60 px-1 py-1 rounded-3xl flex mt-4">
