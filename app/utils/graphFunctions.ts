@@ -21,8 +21,11 @@ const AVALANCHE_APIURL =
   "https://api.studio.thegraph.com/query/59864/rocketai-avalanche-graph/version/latest";
 const MUMBAI_APIURL =
   "https://api.studio.thegraph.com/query/59864/c-demo/version/latest";
+const FUIJI_APIURL =
+  "https://api.studio.thegraph.com/query/59864/aimarket-fuji/version/latest";
 
-const APIURL = chainId === 43114 ? AVALANCHE_APIURL : MUMBAI_APIURL;
+// const APIURL = chainId === 43114 ? AVALANCHE_APIURL : MUMBAI_APIURL;
+const APIURL = FUIJI_APIURL;
 
 const UNLOCK_APIURL_MUMBAI =
   "https://api.thegraph.com/subgraphs/name/unlock-protocol/mumbai-v2";
