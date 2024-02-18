@@ -500,7 +500,7 @@ export default function UserAgents() {
                   <li>
                     <div
                       onClick={() => router.push("/agents")}
-                      className="border cursor-pointer align-middle flex border-gray-300 bg-blue-100 px-6 py-1 rounded-3xl"
+                      className="border cursor-pointer align-middle flex items-center border-gray-300 bg-blue-100 px-6 py-1 rounded-3xl"
                     >
                       <div className="flex items-center">
                         <p className="font-semibold text-xs">
@@ -541,10 +541,10 @@ export default function UserAgents() {
                   {subscriptionsData &&
                     subscriptionsData.map((subscription: any) => {
                       return (
-                        <li>
+                        <li className="flex items-center">
                           <button
                             type="button"
-                            className={`border cursor-pointer font-semibold text-xs align-middle flex justify-between items-center border-gray-300 bg-blue-100 px-6 py-1 rounded-3xl ${
+                            className={`border cursor-pointer mx-auto font-semibold text-xs align-middle flex justify-between items-center border-gray-300 bg-blue-100 px-6 py-1 rounded-3xl ${
                               subscription === selected ? "bg-green-200" : ""
                             }`}
                             onClick={() => {
