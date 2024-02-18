@@ -3,7 +3,7 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import { Input, InputGroup, InputRightAddon } from "@chakra-ui/react";
 import { IoIosSend } from "react-icons/io";
 import { getCreator, getUser } from "@/utils/graphFunctions";
-import React, { use, useEffect, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import { useAccount } from "wagmi";
 import { getRatingsRank } from "@/firebase/firebaseFunctions";
 import { toBytes, toHex } from "viem";
@@ -26,6 +26,12 @@ export default function UserAgents() {
   const [subscriptionsData, setSubscriptionsData] = useState<any[]>();
   const [loading, setLoading] = useState<boolean>(false);
 
+  const [selected, setSelected] = useState(null);
+
+  // Function to handle course selection
+  const handleSelect = async (sub: any) => {
+    setSelected(sub);
+  };
   const getAssistant = async (assistantID: string) => {
     console.log("Fetching Assistant... Calling OpenAI");
     if (!assistantID) {
@@ -111,14 +117,14 @@ export default function UserAgents() {
   };
 
   // code to chat with a party using a threadID
-  const sendMessage = async () => {
+  const sendMessage = async (msg: any) => {
     try {
       console.log("Sending msg... Calling OpenAI");
       if (!assistantID) {
         console.log("Agent Details missing");
         return;
       }
-      if (!inputPrompt) {
+      if (!msg) {
         console.log("Input prompt missing");
         return;
       }
@@ -138,7 +144,7 @@ export default function UserAgents() {
         },
         body: JSON.stringify({
           threadID: threadID,
-          messageContent: inputPrompt,
+          messageContent: msg,
           fileIds: [],
         }),
       })
@@ -255,6 +261,7 @@ export default function UserAgents() {
 
   const performToolCall = async (toolCall: any): Promise<any | undefined> => {
     try {
+      // @ts-ignore
       const functionToCall = availableFunctions[toolCall.function.name];
       console.log(functionToCall);
       const functionArgs = JSON.parse(toolCall.function.arguments);
@@ -409,6 +416,20 @@ export default function UserAgents() {
         console.log(err);
       });
     return data;
+  }; // Inside your component
+  const inputRef = useRef(null);
+
+  const handleKeyPress = (e: any) => {
+    if (e.key === "Enter") {
+      //@ts-ignore
+
+      sendMessage(inputRef.current.value);
+      //@ts-ignore
+
+      inputRef.current.value = ""; // Clear the input field
+      //@ts-ignore
+      inputRef.current.placeholder = "enter prompt for agent"; // Show the placeholder again
+    }
   };
 
   // "thread_nf2kCoESw6fyC9jvGlgKl6Fv";
@@ -523,7 +544,9 @@ export default function UserAgents() {
                         <li>
                           <button
                             type="button"
-                            className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-orange-200"
+                            className={`border cursor-pointer font-semibold text-xs align-middle flex justify-between items-center border-gray-300 bg-blue-100 px-6 py-1 rounded-3xl ${
+                              subscription === selected ? "bg-green-200" : ""
+                            }`}
                             onClick={() => {
                               setAssistantID(subscription.assistantId);
 
@@ -533,6 +556,7 @@ export default function UserAgents() {
                                 subscription.threadID,
                                 subscription.assistantId
                               );
+                              handleSelect(subscription);
                             }}
                           >
                             <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
@@ -566,11 +590,7 @@ export default function UserAgents() {
 
               {threadMessages && (
                 <div className="mb-10">
-                  {loading ? (
-                    <Spinner size="xl" />
-                  ) : (
-                    <ThreadMessagesMarkdown threadMessages={threadMessages} />
-                  )}
+                  <ThreadMessagesMarkdown threadMessages={threadMessages} />
                 </div>
               )}
             </div>
@@ -591,7 +611,7 @@ export default function UserAgents() {
                   );
                 })}
           </div> */}
-            <div className="fixed mr-40 bottom-0  py-3 px-3 mx-10 w-[calc(70%-2.5rem)] rounded-xl bg-white">
+            <div className="fixed mr-40 bottom-0  py-3 px-3 mx-10 w-[calc(50%-2.5rem)] rounded-xl bg-white">
               {/* <div className="fixed mr-40 bottom-0 mb-3 py-3 my-10 px-3 w-[70%] rounded-xl"> */}
               <InputGroup>
                 <Input
@@ -600,11 +620,12 @@ export default function UserAgents() {
                   borderWidth="initial"
                   focusBorderColor="black"
                   size="lg"
-                  bgColor="white"
+                  bgColor="bg-50 "
                   type="text"
                   className="font-semibold"
                   placeholder="enter prompt for agent"
-                  onChange={(e) => setInputPrompt(e.target.value)}
+                  ref={inputRef} // Assign ref to the input field
+                  onKeyDown={handleKeyPress} // Use 'onKeyDown' instead of 'onKeyPress'
                 />
                 <InputRightAddon
                   bgColor="white"
@@ -614,23 +635,20 @@ export default function UserAgents() {
                   <IoIosSend
                     className="text-xl cursor-pointer"
                     onClick={() => {
-                      sendMessage();
-                      // pollRun(
-                      //   "thread_nf2kCoESw6fyC9jvGlgKl6Fv",
-                      //   "run_uhHtsA6BWnu47j888RCX4ICJ",
-                      //   "asst_ieJL0i6m3WHNmjLcZnDSvAAV"
-                      // );
-                      // ("thread_nf2kCoESw6fyC9jvGlgKl6Fv");
-                      // ("run_uhHtsA6BWnu47j888RCX4ICJ");
-                      // ("asst_ieJL0i6m3WHNmjLcZnDSvAAV");
-                      // generateImage(inputPrompt);
-                      // getRun(
-                      //   "thread_SZ9JRy28i9QQS2o8yu0wXJ5R",
-                      //   "run_wMAAyvAia73ugun5W0noNrGW"
-                      // );
+                      //@ts-ignore
+                      sendMessage(inputRef.current.value);
+                      //@ts-ignore
+                      inputRef.current.value = ""; // Clear the input field
+                      //@ts-ignore
+                      inputRef.current.placeholder = "enter prompt for agent"; // Show the placeholder again
                     }}
                   />
                 </InputRightAddon>
+                {loading && (
+                  <div className=" ml-4">
+                    <Spinner size="xl" />
+                  </div>
+                )}
               </InputGroup>
             </div>
           </div>
