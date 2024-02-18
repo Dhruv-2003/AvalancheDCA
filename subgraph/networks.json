@@ -16,5 +16,11 @@
       "address": "0x3fDfb0F7b1f17d39DD5e326A929541Cd2C0Cbc36",
       "startBlock": 38859413
     }
+  },
+  "fuji": {
+    "agentHandlerV3": {
+      "address": "0x3fDfb0F7b1f17d39DD5e326A929541Cd2C0Cbc36",
+      "startBlock": 30052887
+    }
   }
 }
