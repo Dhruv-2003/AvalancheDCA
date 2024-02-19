@@ -60,16 +60,16 @@ module.exports = async ({ deployments }) => {
   // Add the reward mechanism for users to the contract
   let tx = await agentPlaceInstance.addRewardMechanism(
     "ratings",
-    " ",
+    codeStringR,
     // This should be the chainlink forwarder address after creating
     // the time based upkeep job to call the function sendRequest with the
     //  sourceID as parameter sourceID is a bytes32 to identify the source
-    // getSourceID("source1")
+    // getSourceID("source1"),
     // wallet.address,
     _forwRatings,
     // An array of the amount of the reward "tokens" that each agent will receive
     // 1st agent 1st index, 2nd agent 2nd index, etc ...
-    distributionRewards,
+    distributionRewards
     // { gasLimit: 10000000 }
   );
   await tx.wait();
