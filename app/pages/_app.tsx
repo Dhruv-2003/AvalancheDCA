@@ -55,7 +55,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const commonOptions = {
     chains,
     // projectId: process.env.NEXT_APP_WALLETCONNECT_PROJECT_ID as string,
-    projectId: "b1633334561c5cd849b272bd995beb2b",
+    projectId: "b1a6b82504d7b43658a8ce0fe6a134dd",
   };
 
   const popularWallets = useMemo(
