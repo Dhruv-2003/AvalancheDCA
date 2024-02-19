@@ -96,8 +96,8 @@ export default function App({ Component, pageProps }: AppProps) {
   });
 
   const router = useRouter();
-  const showHeader =
-    router.pathname === "/create" || `/contribute/${id}` ? false : true;
+  // const showHeader =
+  //   router.pathname === "/create" || `/contribute/${id}` ? false : true;
   return (
     <ChakraProvider>
       <WagmiConfig config={wagmiConfig}>
@@ -109,7 +109,7 @@ export default function App({ Component, pageProps }: AppProps) {
           })}
           chains={chains}
         >
-          {showHeader && <Navbar />}
+          {<Navbar />}
           <Component {...pageProps} />
         </RainbowKitProvider>
       </WagmiConfig>
