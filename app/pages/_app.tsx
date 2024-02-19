@@ -14,7 +14,7 @@ import { avalancheFuji, avalanche } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { useRouter } from "next/router";
 import { ParticleNetwork } from "@particle-network/auth";
-import { Avalanche, AvalancheTestnet } from "@particle-network/chains";
+// import { Avalanche, AvalancheTestnet } from "@particle-network/chains";
 
 import { particleWallet } from "@particle-network/rainbowkit-ext";
 import {
@@ -31,21 +31,21 @@ import {
 const id = "";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const particle = useMemo(
-    () =>
-      new ParticleNetwork({
-        // projectId: process.env.NEXT_APP_PROJECT_ID as string,
-        projectId: "4cea44ac-da24-4eae-83df-92a38c06b431",
-        // clientKey: process.env.NEXT_APP_CLIENT_KEY as string,
-        clientKey: "crCcYZ5a5mevKavfQR0MCSSoIQCVTAW4odMtcqSQ",
-        // appId: process.env.NEXT_APP_APP_ID as string,
-        appId: "ca427f7d-df60-4d5e-9692-d3915b3d7a9b",
-        chainName: AvalancheTestnet.name,
-        chainId: AvalancheTestnet.id,
-        wallet: { displayWalletEntry: true },
-      }),
-    []
-  );
+  // const particle = useMemo(
+  //   () =>
+  //     new ParticleNetwork({
+  //       // projectId: process.env.NEXT_APP_PROJECT_ID as string,
+  //       projectId: "4cea44ac-da24-4eae-83df-92a38c06b431",
+  //       // clientKey: process.env.NEXT_APP_CLIENT_KEY as string,
+  //       clientKey: "crCcYZ5a5mevKavfQR0MCSSoIQCVTAW4odMtcqSQ",
+  //       // appId: process.env.NEXT_APP_APP_ID as string,
+  //       appId: "ca427f7d-df60-4d5e-9692-d3915b3d7a9b",
+  //       chainName: AvalancheTestnet.name,
+  //       chainId: AvalancheTestnet.id,
+  //       wallet: { displayWalletEntry: true },
+  //     }),
+  //   []
+  // );
 
   new ParticleNetwork({
     // projectId: process.env.NEXT_APP_PROJECT_ID as string,
@@ -54,9 +54,9 @@ export default function App({ Component, pageProps }: AppProps) {
     clientKey: "crCcYZ5a5mevKavfQR0MCSSoIQCVTAW4odMtcqSQ",
     // appId: process.env.NEXT_APP_APP_ID as string,
     appId: "ca427f7d-df60-4d5e-9692-d3915b3d7a9b",
-    chainName: AvalancheTestnet.name,
-    chainId: AvalancheTestnet.id,
-    wallet: { displayWalletEntry: true },
+    // chainName: AvalancheTestnet.name,
+    // chainId: AvalancheTestnet.id,
+    // wallet: { displayWalletEntry: true },
   });
 
   const { chains, publicClient, webSocketPublicClient } = configureChains(
@@ -122,16 +122,16 @@ export default function App({ Component, pageProps }: AppProps) {
     ],
   };
 
-const connectors = connectorsForWallets([
-  popularWallets,
-  {
-    groupName: "Other",
-    wallets: [
-      trustWallet({ chains, projectId: "891c774c3fec428fb8bafcec208355c3" }),
-      omniWallet({ chains, projectId: "891c774c3fec428fb8bafcec208355c3" }),
-    ],
-  },
-]);
+  const connectors = connectorsForWallets([
+    popularWallets,
+    {
+      groupName: "Other",
+      wallets: [
+        trustWallet({ chains, projectId: "891c774c3fec428fb8bafcec208355c3" }),
+        omniWallet({ chains, projectId: "891c774c3fec428fb8bafcec208355c3" }),
+      ],
+    },
+  ]);
 
   const wagmiConfig = createConfig({
     autoConnect: true,
