@@ -35,7 +35,7 @@ const Navbar = () => {
               </p>
             </div>
             <div
-              onClick={() => router.push("/dashboard/1")}
+              onClick={() => router.push("/dashboard")}
               className="bg-white rounded-3xl px-2 py-1 mx-1 cursor-pointer"
             >
               <p className="text-center text-md font-semibold my-auto text-black">
@@ -63,7 +63,7 @@ const Navbar = () => {
         <div className="mt-4">
           <ConnectButton
             accountStatus="address"
-            // showBalance={false}
+            showBalance={false}
             chainStatus="icon"
           />
         </div>

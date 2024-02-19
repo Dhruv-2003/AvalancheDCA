@@ -25,17 +25,16 @@ const User = () => {
       return;
     }
     let ensName;
-    try{
+    try {
       ensName = await publicClient.getEnsName({
         address: creatorAccount,
       });
-    }catch(err){
-      console.log(err)
+    } catch (err) {
+      console.log(err);
     }
 
-
     if (ensName) {
-      // @ts-ignore 
+      // @ts-ignore
       setEns(ensName);
       console.log(ensName);
     }
@@ -65,7 +64,6 @@ const User = () => {
   };
   return (
     <div>
-      <Navbar />
       <div className="w-screen h-screen bg-gradient-to-r from-white via-white to-rose-100">
         <div className="flex flex-col w-full">
           <div className="flex flex-col justify-center mx-auto mt-10">
@@ -77,7 +75,9 @@ const User = () => {
               </Wrap>
             </div>
             <div className="text-center">
-              <p className="text-lg font-semibold mt-3">{ens?ens:creatorAccount}</p>
+              <p className="text-lg font-semibold mt-3">
+                {ens ? ens : creatorAccount}
+              </p>
             </div>
           </div>
           <div className="mt-10 mx-auto flex">
