@@ -5,13 +5,13 @@ import rocket from "./Rocket.json";
 
 export default function HeroAnimation() {
   return (
-    <div className="flex justify-center items-center ">
-      <div
+    <div className="flex justify-center items-center mt-5">
+      {/* <div
         style={{ height: "300px", width: "300px" }}
         className="flex flex-col items-center justify-center "
       >
         <Lottie animationData={rocket} />
-      </div>
+      </div> */}
       <div
         style={{ height: "190px", width: "190px" }}
         className="flex flex-col items-center justify-center "

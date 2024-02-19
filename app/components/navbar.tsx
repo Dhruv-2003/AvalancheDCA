@@ -1,27 +1,30 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useRouter } from "next/router";
 import React from "react";
-import Image from "next/image";
-import Logo from "../public/logo.png";
+import { Image } from "@chakra-ui/react";
 
 const Navbar = () => {
   const router = useRouter();
   return (
-    <div className="w-screen bg-gradient-to-r from-white via-white to-rose-100">
+    <div className="w-screen bg-gradient-to-r from-blue-100 via-blue-125 to-blue-200 border border-3 border-blue-400 rounded-lg mb-3">
       <div className="flex justify-between mx-6 ml-10">
         <div onClick={() => router.push("/")} className="mt-4 cursor-pointer">
           <div className="flex">
             <Image
               className="cursor-pointer my-auto mx-2"
-              src={Logo}
+              src={
+                "https://gateway.lighthouse.storage/ipfs/QmQv31jGtJ8QoESkh5jGm345w75giT55DnvYiMeEWifd24"
+              }
               alt="AI-Hackathon"
               width={50}
               height={30}
             ></Image>
-            <p className="text-2xl font-bold font-mono text-indigo-500">AI MARKET</p>
+            <p className="text-2xl font-bold font-mono text-indigo-500">
+              AI MARKET
+            </p>
           </div>
         </div>
-        <div className="flex justify-center mx-auto">
+        <div className="flex items-center ml-[7%]">
           <div className="bg-neutral-200 opacity-60 px-1 py-1 rounded-3xl flex mt-4">
             <div
               onClick={() => router.push("/agents")}
