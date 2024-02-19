@@ -29,7 +29,7 @@ const MUMBAI_APIURL =
 const FUIJI_APIURL =
   "https://api.studio.thegraph.com/query/59864/aimarket-fuji/version/latest";
 
-// const APIURL = chainId === 43114 ? FUIJI_APIURL : AVALANCHE_APIURL;
+// const APIURL = chainId === 43114 ? FUIJI_APIURL  : AVALANCHE_APIURL;
 const APIURL = FUIJI_APIURL;
 
 const UNLOCK_APIURL_MUMBAI =
