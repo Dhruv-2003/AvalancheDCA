@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Avatar, Wrap, WrapItem } from "@chakra-ui/react";
 import Navbar from "@/components/navbar";
 import HeroAnimation from "@/components/Animation/HeroAnimation";
-import { ParticleNetwork } from "@particle-network/auth";
+// import { ParticleNetwork } from "@particle-network/auth";
 
 export default function Home() {
   // useState and useEffect to fetch and set dynamic data

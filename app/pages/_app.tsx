@@ -14,7 +14,7 @@ import { avalancheFuji, avalanche } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { useRouter } from "next/router";
 import { ParticleNetwork } from "@particle-network/auth";
-// import { Avalanche, AvalancheTestnet } from "@particle-network/chains";
+import { Avalanche, AvalancheTestnet } from "@particle-network/chains";
 
 import { particleWallet } from "@particle-network/rainbowkit-ext";
 import {
@@ -54,9 +54,9 @@ export default function App({ Component, pageProps }: AppProps) {
     clientKey: "crCcYZ5a5mevKavfQR0MCSSoIQCVTAW4odMtcqSQ",
     // appId: process.env.NEXT_APP_APP_ID as string,
     appId: "ca427f7d-df60-4d5e-9692-d3915b3d7a9b",
-    // chainName: AvalancheTestnet.name,
-    // chainId: AvalancheTestnet.id,
-    // wallet: { displayWalletEntry: true },
+    chainName: AvalancheTestnet.name,
+    chainId: AvalancheTestnet.id,
+    wallet: { displayWalletEntry: true },
   });
 
   const { chains, publicClient, webSocketPublicClient } = configureChains(
