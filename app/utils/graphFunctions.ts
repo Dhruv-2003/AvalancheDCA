@@ -16,11 +16,11 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 // const publicClient = getPublicClient();
 // const chainId = publicClient.chain.id;
-import { getPublicClient } from "wagmi/actions";
+// import { getPublicClient } from "wagmi/actions";
 // import { Bytes } from "@graphprotocol/graph-ts";
 
-const publicClient = getPublicClient();
-const chainId = publicClient.chain.id;
+// const publicClient = getPublicClient();
+// const chainId = publicClient.chain.id;
 
 const AVALANCHE_APIURL =
   "https://api.studio.thegraph.com/query/59864/rocketai-avalanche-graph/version/latest";
@@ -29,8 +29,8 @@ const MUMBAI_APIURL =
 const FUIJI_APIURL =
   "https://api.studio.thegraph.com/query/59864/aimarket-fuji/version/latest";
 
-const APIURL = chainId === 43114 ? FUIJI_APIURL  : AVALANCHE_APIURL;
-// const APIURL = FUIJI_APIURL;
+// const APIURL = chainId === 43114 ? FUIJI_APIURL : AVALANCHE_APIURL;
+const APIURL = FUIJI_APIURL;
 
 const UNLOCK_APIURL_MUMBAI =
   "https://api.thegraph.com/subgraphs/name/unlock-protocol/mumbai-v2";
