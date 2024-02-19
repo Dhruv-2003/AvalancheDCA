@@ -6,7 +6,7 @@ import { Image } from "@chakra-ui/react";
 const Navbar = () => {
   const router = useRouter();
   return (
-    <div className="w-screen bg-gradient-to-r from-blue-100 via-blue-125 to-blue-200 border border-3 border-blue-400 rounded-lg mb-3">
+    <div className="w-screen bg-gradient-to-r rounded-lg mb-3">
       <div className="flex justify-between mx-6 ml-10">
         <div onClick={() => router.push("/")} className="mt-4 cursor-pointer">
           <div className="flex">
@@ -63,7 +63,7 @@ const Navbar = () => {
         <div className="mt-4">
           <ConnectButton
             accountStatus="address"
-            showBalance={false}
+            // showBalance={false}
             chainStatus="icon"
           />
         </div>
