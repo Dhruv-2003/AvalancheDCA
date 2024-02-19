@@ -47,7 +47,19 @@ export default function App({ Component, pageProps }: AppProps) {
     []
   );
 
-  const { chains, publicClient } = configureChains(
+  new ParticleNetwork({
+    // projectId: process.env.NEXT_APP_PROJECT_ID as string,
+    projectId: "4cea44ac-da24-4eae-83df-92a38c06b431",
+    // clientKey: process.env.NEXT_APP_CLIENT_KEY as string,
+    clientKey: "crCcYZ5a5mevKavfQR0MCSSoIQCVTAW4odMtcqSQ",
+    // appId: process.env.NEXT_APP_APP_ID as string,
+    appId: "ca427f7d-df60-4d5e-9692-d3915b3d7a9b",
+    chainName: AvalancheTestnet.name,
+    chainId: AvalancheTestnet.id,
+    wallet: { displayWalletEntry: true },
+  });
+
+  const { chains, publicClient, webSocketPublicClient } = configureChains(
     [avalancheFuji],
     [publicProvider()]
   );
@@ -58,41 +70,74 @@ export default function App({ Component, pageProps }: AppProps) {
     projectId: "891c774c3fec428fb8bafcec208355c3",
   };
 
-  const popularWallets = useMemo(
-    () => ({
-      groupName: "Popular",
-      wallets: [
-        particleWallet({ chains, authType: "google" }),
-        particleWallet({ chains, authType: "facebook" }),
-        particleWallet({ chains, authType: "apple" }),
-        particleWallet({ chains }),
-        rainbowWallet(commonOptions),
-        coinbaseWallet({ appName: "RainbowKit demo", ...commonOptions }),
-        metaMaskWallet(commonOptions),
-        walletConnectWallet(commonOptions),
-      ],
-    }),
-    [particle]
-  );
+  // const popularWallets = useMemo(
+  //   () => ({
+  //     groupName: "Popular",
+  //     wallets: [
+  //       particleWallet({ chains, authType: "google" }),
+  //       particleWallet({ chains, authType: "facebook" }),
+  //       particleWallet({ chains, authType: "apple" }),
+  //       particleWallet({ chains }),
+  //       rainbowWallet(commonOptions),
+  //       coinbaseWallet({ appName: "RainbowKit demo", ...commonOptions }),
+  //       metaMaskWallet(commonOptions),
+  //       walletConnectWallet(commonOptions),
+  //     ],
+  //   }),
+  //   [particle]
+  // );
 
-  const connectors = connectorsForWallets([
-    popularWallets,
-    {
-      groupName: "Other",
-      wallets: [
-        argentWallet(commonOptions),
-        trustWallet(commonOptions),
-        omniWallet(commonOptions),
-        metaMaskWallet(commonOptions),
-        ledgerWallet(commonOptions),
-      ],
-    },
-  ]);
+  // const connectors = connectorsForWallets([
+  //   popularWallets,
+  //   {
+  //     groupName: "Other",
+  //     wallets: [
+  //       argentWallet(commonOptions),
+  //       trustWallet(commonOptions),
+  //       omniWallet(commonOptions),
+  //       metaMaskWallet(commonOptions),
+  //       ledgerWallet(commonOptions),
+  //     ],
+  //   },
+  // ]);
+
+  const particleWallets = [
+    particleWallet({ chains, authType: "google" }),
+    particleWallet({ chains, authType: "facebook" }),
+    particleWallet({ chains, authType: "apple" }),
+    particleWallet({ chains }),
+  ];
+
+  const popularWallets = {
+    groupName: "Popular",
+    wallets: [
+      ...particleWallets,
+      rainbowWallet({ chains, projectId: "891c774c3fec428fb8bafcec208355c3" }),
+      coinbaseWallet({ appName: "RainbowKit demo", chains }),
+      metaMaskWallet({ chains, projectId: "891c774c3fec428fb8bafcec208355c3" }),
+      walletConnectWallet({
+        chains,
+        projectId: "891c774c3fec428fb8bafcec208355c3",
+      }),
+    ],
+  };
+
+const connectors = connectorsForWallets([
+  popularWallets,
+  {
+    groupName: "Other",
+    wallets: [
+      trustWallet({ chains, projectId: "891c774c3fec428fb8bafcec208355c3" }),
+      omniWallet({ chains, projectId: "891c774c3fec428fb8bafcec208355c3" }),
+    ],
+  },
+]);
 
   const wagmiConfig = createConfig({
     autoConnect: true,
     connectors,
     publicClient,
+    webSocketPublicClient,
   });
 
   const router = useRouter();
