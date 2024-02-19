@@ -16,14 +16,14 @@ export default function Home() {
           <div className="mt-20 mx-auto p-6 bg-white shadow-xl rounded-lg max-w-4xl">
             <div className="items-center text-center">
               <p className="text-4xl font-bold bg-clip-text bg-gradient-to-b from-indigo-200 to bg-indigo-500">
-                RocketAI🚀
+              AI MARKET🚀
               </p>
 
               <p className="font-md font-mono text-black font-bold mt-2">
                 Revolutionizing AI agent development with collaborative
                 creation, fine-tuning, and diverse applications. Incentivizes
                 top-performing agents and users using Chainlink automation and functions for
-                rewards in RAI tokens rocketAI's ERC20 standard.
+                rewards in RAI tokens AIMarket's ERC20 standard.
               </p>
             </div>
             <div className="flex flex-col items-center">
