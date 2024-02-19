@@ -12,7 +12,7 @@ import {
   Select,
   Tag,
 } from "@chakra-ui/react";
-import { useToast } from '@chakra-ui/react'
+import { useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import {
@@ -68,7 +68,7 @@ const AgentId = () => {
   const router = useRouter();
   const { address: userAccount } = useAccount();
   const _agentId = router.query.agentid;
-  const toast = useToast()
+  const toast = useToast();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [agentData, setAgentData] = useState<agentDataType>();
@@ -294,12 +294,12 @@ const AgentId = () => {
       });
       console.log(transaction);
       await toast({
-        title: 'Agent Subscribed',
-        description: "Your agent has been created subscribed",
-        status: 'success',
+        title: "Agent Subscribed",
+        description: "Your agent has been subscribed",
+        status: "success",
         duration: 9000,
         isClosable: true,
-      })
+      });
     } catch (error) {
       console.log(error);
     }

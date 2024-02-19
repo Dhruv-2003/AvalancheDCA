@@ -14,6 +14,8 @@ import { avalancheFuji, avalanche } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { useRouter } from "next/router";
 import { ParticleNetwork } from "@particle-network/auth";
+import { Avalanche, AvalancheTestnet } from "@particle-network/chains";
+
 import { particleWallet } from "@particle-network/rainbowkit-ext";
 import {
   argentWallet,
@@ -37,9 +39,9 @@ export default function App({ Component, pageProps }: AppProps) {
         // clientKey: process.env.NEXT_APP_CLIENT_KEY as string,
         clientKey: "ccuwpVhsTeTbTQxbRd2YA4JbpNKdXZ8FKn3SA192",
         // appId: process.env.NEXT_APP_APP_ID as string,
-        appId : "45df06db-c868-4e50-b620-5a5c1af565e9",
-        chainName: "Ethereum",
-        chainId: 1,
+        appId: "45df06db-c868-4e50-b620-5a5c1af565e9",
+        chainName: AvalancheTestnet.name,
+        chainId: AvalancheTestnet.id,
         wallet: { displayWalletEntry: true },
       }),
     []
@@ -53,7 +55,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const commonOptions = {
     chains,
     // projectId: process.env.NEXT_APP_WALLETCONNECT_PROJECT_ID as string,
-    projectId: "b1633334561c5cd849b272bd995beb2b"
+    projectId: "b1633334561c5cd849b272bd995beb2b",
   };
 
   const popularWallets = useMemo(
