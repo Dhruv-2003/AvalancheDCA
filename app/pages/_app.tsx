@@ -35,11 +35,11 @@ export default function App({ Component, pageProps }: AppProps) {
     () =>
       new ParticleNetwork({
         // projectId: process.env.NEXT_APP_PROJECT_ID as string,
-        projectId: "3552c5ec-1b10-42a4-ab7b-e54b7c1bbcd1",
+        projectId: "4cea44ac-da24-4eae-83df-92a38c06b431",
         // clientKey: process.env.NEXT_APP_CLIENT_KEY as string,
-        clientKey: "ccuwpVhsTeTbTQxbRd2YA4JbpNKdXZ8FKn3SA192",
+        clientKey: "crCcYZ5a5mevKavfQR0MCSSoIQCVTAW4odMtcqSQ",
         // appId: process.env.NEXT_APP_APP_ID as string,
-        appId: "45df06db-c868-4e50-b620-5a5c1af565e9",
+        appId: "ca427f7d-df60-4d5e-9692-d3915b3d7a9b",
         chainName: AvalancheTestnet.name,
         chainId: AvalancheTestnet.id,
         wallet: { displayWalletEntry: true },
@@ -55,7 +55,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const commonOptions = {
     chains,
     // projectId: process.env.NEXT_APP_WALLETCONNECT_PROJECT_ID as string,
-    projectId: "b1a6b82504d7b43658a8ce0fe6a134dd",
+    projectId: "891c774c3fec428fb8bafcec208355c3",
   };
 
   const popularWallets = useMemo(
