@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Avatar, Wrap, WrapItem } from "@chakra-ui/react";
 import Navbar from "@/components/navbar";
 import HeroAnimation from "@/components/Animation/HeroAnimation";
+import { ParticleNetwork } from "@particle-network/auth";
 
 export default function Home() {
   // useState and useEffect to fetch and set dynamic data
@@ -16,22 +17,32 @@ export default function Home() {
           <div className="mt-20 mx-auto p-6 bg-white shadow-xl rounded-lg max-w-4xl">
             <div className="items-center text-center">
               <p className="text-4xl font-bold bg-clip-text bg-gradient-to-b from-indigo-200 to bg-indigo-500">
-              AI MARKET🚀
+                AI-Market
               </p>
 
               <p className="font-md font-mono text-black font-bold mt-2">
                 Revolutionizing AI agent development with collaborative
                 creation, fine-tuning, and diverse applications. Incentivizes
-                top-performing agents and users using Chainlink automation and functions for
-                rewards in RAI tokens AIMarket's ERC20 standard.
+                top-performing agents and users using Chainlink automation and
+                functions for rewards in AIM tokens AIMarket's ERC20 standard.
               </p>
             </div>
             <div className="flex flex-col items-center">
-              <button onClick={() => window.open('https://github.com/Architsharma7/Constellation', '_blank')} className="mt-5 bg-gradient-to-r from-indigo-200 to bg-indigo-500 hover:from-indigo-500 hover:to-indigo-200 text-white font-bold py-2 px-4 rounded-full">Source Code</button>
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://github.com/Dhruv-2003/AvalancheDCA",
+                    "_blank"
+                  )
+                }
+                className="mt-5 bg-gradient-to-r from-indigo-200 to bg-indigo-500 hover:from-indigo-500 hover:to-indigo-200 text-white font-bold py-2 px-4 rounded-full"
+              >
+                Source Code
+              </button>
             </div>
           </div>
 
-          {/* <HeroAnimation></HeroAnimation> */}
+          <HeroAnimation></HeroAnimation>
 
           {/* Use Cases Section */}
           <div className="mt-10 grid grid-cols-2 mx-[20%] gap-6">
@@ -39,7 +50,7 @@ export default function Home() {
             <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
               <h3 className="text-lg font-semibold mb-2">Agent Creation</h3>
               <p className="text-sm text-gray-600">
-                RocketAI leverages GPT-4 and other cutting-edge AI models to
+                AIMarket leverages GPT-4 and other cutting-edge AI models to
                 enable the creation of diverse and sophisticated AI agents.
                 These agents can perform a variety of tasks, ranging from simple
                 automation to complex problem-solving.
@@ -63,7 +74,7 @@ export default function Home() {
             <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
               <h3 className="text-lg font-semibold mb-2">Subscription Model</h3>
               <p className="text-sm text-gray-600">
-                RocketAI introduces a novel subscription model, powered by the
+                AIMarket introduces a novel subscription model, powered by the
                 Unlock Protocol, enabling agent creators to generate sustainable
                 revenue while providing users with access to high-quality AI
                 services.
@@ -85,9 +96,25 @@ export default function Home() {
           </div>
 
           {/* Powered By Section */}
-          <div className="mt-5 text-center">
+          <div className="mt-5 mb-[4%] text-center">
             <h2 className="text-2xl font-bold mb-4">Powered By</h2>
             <div className="flex flex-wrap justify-center items-center gap-8">
+              <div className="flex flex-col items-center">
+                <img
+                  src="https://gateway.lighthouse.storage/ipfs/QmfUQj2Rz1kvRZmBDHAfSaGx9rxsD5D1YjaXXdmZpE4JWe"
+                  alt="The Graph"
+                  className="h-16"
+                />
+                <p>Avalanche</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <img
+                  src="https://gateway.lighthouse.storage/ipfs/QmaNiKXGhCt8AhTQ5UH4crr2RyndddsDwo89YicmcDvcrp"
+                  alt="The Graph"
+                  className="h-16 rounded-full"
+                />
+                <p>ParticleNetwork</p>
+              </div>
               <div>
                 <img
                   src={

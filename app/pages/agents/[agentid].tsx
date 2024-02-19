@@ -606,7 +606,7 @@ const AgentId = () => {
           </div>
         </div>
         <div className="mt-10 w-5/6 mx-auto flex">
-          <div className="w-2/3 border bg-violet-100 flex flex-col border-black mx-6 rounded-xl px-10 py-3 h-96 overflow-scroll">
+          <div className="w-full border bg-violet-100 flex flex-col border-black mx-6 rounded-xl px-10 py-3 h-96 overflow-scroll">
             <p className="text-xl font-mono font-thin text-gray-600">
               Previous Rounds Won
             </p>
@@ -628,11 +628,11 @@ const AgentId = () => {
                           <Td>{getTime(round.blockTimestamp)}</Td>
                           <Td>
                             <a
-                              href={`https://mumbai.polygonscan.com/tx/${round.transactionHash}`}
+                              href={`https://43113.testnet.snowtrace.io/tx/${round.transactionHash}`}
                               target="_blank"
                               className="text-blue-500"
                             >
-                              https://mumbai.polygonscan.com/tx/
+                              https://43113.testnet.snowtrace.io/tx/
                               {round.transactionHash}
                             </a>
                           </Td>
