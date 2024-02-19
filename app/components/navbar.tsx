@@ -2,6 +2,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useRouter } from "next/router";
 import React from "react";
 import { Image } from "@chakra-ui/react";
+import App from "../pages/_app";
 
 const Navbar = () => {
   const router = useRouter();

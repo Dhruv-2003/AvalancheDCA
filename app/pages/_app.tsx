@@ -31,36 +31,24 @@ import {
 const id = "";
 
 export default function App({ Component, pageProps }: AppProps) {
-  // const particle = useMemo(
-  //   () =>
-  //     new ParticleNetwork({
-  //       // projectId: process.env.NEXT_APP_PROJECT_ID as string,
-  //       projectId: "4cea44ac-da24-4eae-83df-92a38c06b431",
-  //       // clientKey: process.env.NEXT_APP_CLIENT_KEY as string,
-  //       clientKey: "crCcYZ5a5mevKavfQR0MCSSoIQCVTAW4odMtcqSQ",
-  //       // appId: process.env.NEXT_APP_APP_ID as string,
-  //       appId: "ca427f7d-df60-4d5e-9692-d3915b3d7a9b",
-  //       chainName: AvalancheTestnet.name,
-  //       chainId: AvalancheTestnet.id,
-  //       wallet: { displayWalletEntry: true },
-  //     }),
-  //   []
-  // );
+  const particle = useMemo(
+    () =>
+      new ParticleNetwork({
+        // projectId: process.env.NEXT_APP_PROJECT_ID as string,
+        projectId: "4cea44ac-da24-4eae-83df-92a38c06b431",
+        // clientKey: process.env.NEXT_APP_CLIENT_KEY as string,
+        clientKey: "crCcYZ5a5mevKavfQR0MCSSoIQCVTAW4odMtcqSQ",
+        // appId: process.env.NEXT_APP_APP_ID as string,
+        appId: "ca427f7d-df60-4d5e-9692-d3915b3d7a9b",
+        chainName: AvalancheTestnet.name,
+        chainId: AvalancheTestnet.id,
+        wallet: { displayWalletEntry: true },
+      }),
+    []
+  );
 
-  new ParticleNetwork({
-    // projectId: process.env.NEXT_APP_PROJECT_ID as string,
-    projectId: "4cea44ac-da24-4eae-83df-92a38c06b431",
-    // clientKey: process.env.NEXT_APP_CLIENT_KEY as string,
-    clientKey: "crCcYZ5a5mevKavfQR0MCSSoIQCVTAW4odMtcqSQ",
-    // appId: process.env.NEXT_APP_APP_ID as string,
-    appId: "ca427f7d-df60-4d5e-9692-d3915b3d7a9b",
-    chainName: AvalancheTestnet.name,
-    chainId: AvalancheTestnet.id,
-    wallet: { displayWalletEntry: true },
-  });
-
-  const { chains, publicClient, webSocketPublicClient } = configureChains(
-    [avalancheFuji],
+  const { chains, publicClient } = configureChains(
+    [avalancheFuji, avalanche],
     [publicProvider()]
   );
 
@@ -70,65 +58,33 @@ export default function App({ Component, pageProps }: AppProps) {
     projectId: "891c774c3fec428fb8bafcec208355c3",
   };
 
-  // const popularWallets = useMemo(
-  //   () => ({
-  //     groupName: "Popular",
-  //     wallets: [
-  //       particleWallet({ chains, authType: "google" }),
-  //       particleWallet({ chains, authType: "facebook" }),
-  //       particleWallet({ chains, authType: "apple" }),
-  //       particleWallet({ chains }),
-  //       rainbowWallet(commonOptions),
-  //       coinbaseWallet({ appName: "RainbowKit demo", ...commonOptions }),
-  //       metaMaskWallet(commonOptions),
-  //       walletConnectWallet(commonOptions),
-  //     ],
-  //   }),
-  //   [particle]
-  // );
-
-  // const connectors = connectorsForWallets([
-  //   popularWallets,
-  //   {
-  //     groupName: "Other",
-  //     wallets: [
-  //       argentWallet(commonOptions),
-  //       trustWallet(commonOptions),
-  //       omniWallet(commonOptions),
-  //       metaMaskWallet(commonOptions),
-  //       ledgerWallet(commonOptions),
-  //     ],
-  //   },
-  // ]);
-
-  const particleWallets = [
-    particleWallet({ chains, authType: "google" }),
-    particleWallet({ chains, authType: "facebook" }),
-    particleWallet({ chains, authType: "apple" }),
-    particleWallet({ chains }),
-  ];
-
-  const popularWallets = {
-    groupName: "Popular",
-    wallets: [
-      ...particleWallets,
-      rainbowWallet({ chains, projectId: "891c774c3fec428fb8bafcec208355c3" }),
-      coinbaseWallet({ appName: "RainbowKit demo", chains }),
-      metaMaskWallet({ chains, projectId: "891c774c3fec428fb8bafcec208355c3" }),
-      walletConnectWallet({
-        chains,
-        projectId: "891c774c3fec428fb8bafcec208355c3",
-      }),
-    ],
-  };
+  const popularWallets = useMemo(
+    () => ({
+      groupName: "Popular",
+      wallets: [
+        particleWallet({ chains, authType: "google" }),
+        particleWallet({ chains, authType: "facebook" }),
+        particleWallet({ chains, authType: "apple" }),
+        particleWallet({ chains }),
+        // rainbowWallet(commonOptions),
+        // coinbaseWallet({ appName: "RainbowKit demo", ...commonOptions }),
+        metaMaskWallet(commonOptions),
+        // walletConnectWallet(commonOptions),
+      ],
+    }),
+    [particle]
+  );
 
   const connectors = connectorsForWallets([
     popularWallets,
     {
       groupName: "Other",
       wallets: [
-        trustWallet({ chains, projectId: "891c774c3fec428fb8bafcec208355c3" }),
-        omniWallet({ chains, projectId: "891c774c3fec428fb8bafcec208355c3" }),
+        // argentWallet(commonOptions),
+        // trustWallet(commonOptions),
+        // omniWallet(commonOptions),
+        // metaMaskWallet(commonOptions),
+        // ledgerWallet(commonOptions),
       ],
     },
   ]);
@@ -137,12 +93,11 @@ export default function App({ Component, pageProps }: AppProps) {
     autoConnect: true,
     connectors,
     publicClient,
-    webSocketPublicClient,
   });
 
   const router = useRouter();
-  // const showHeader =
-  //   router.pathname === "/create" || `/contribute/${id}` ? false : true;
+  const showHeader =
+    router.pathname === "/create" || `/contribute/${id}` ? false : true;
   return (
     <ChakraProvider>
       <WagmiConfig config={wagmiConfig}>
@@ -154,7 +109,7 @@ export default function App({ Component, pageProps }: AppProps) {
           })}
           chains={chains}
         >
-          {<Navbar />}
+          {showHeader && <Navbar />}
           <Component {...pageProps} />
         </RainbowKitProvider>
       </WagmiConfig>
