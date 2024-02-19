@@ -64,6 +64,7 @@ const User = () => {
   };
   return (
     <div>
+      <Navbar />
       <div className="w-screen h-screen bg-gradient-to-r from-white via-white to-rose-100">
         <div className="flex flex-col w-full">
           <div className="flex flex-col justify-center mx-auto mt-10">
