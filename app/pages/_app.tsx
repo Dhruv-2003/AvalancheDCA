@@ -48,7 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
   );
 
   const { chains, publicClient } = configureChains(
-    [avalancheFuji, avalanche],
+    [avalancheFuji],
     [publicProvider()]
   );
 
